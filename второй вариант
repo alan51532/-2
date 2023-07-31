@@ -1,0 +1,61 @@
+from tkinter import Tk, Entry
+import tkinter as tk
+from tkinter import ttk
+import random
+
+
+
+root = Tk()
+root.geometry('300x300')
+
+
+entry = Entry(root, font="Arial", justify="center", width=4)
+entry.pack()
+
+label = ttk.Label(text=' (ход соперника)', font=("Helvetica", 15))
+label.pack()
+def ser(event):
+    y = int(entry.get())
+    print(y)
+    ser2()
+
+def ser2():
+    label.destroy()
+    label2 = ttk.Label(text=' (ход)', font=("Helvetica", 15))
+    label2.pack()
+##def ser2(event):
+##    print('функц два')
+##    y = int(entry.get())
+##    print('y')
+##    label.destroy()
+##    label2 = ttk.Label(text=' (ход)', font=("Helvetica", 15))
+##    label2.pack()
+##    
+##def ser3(event):
+##    print('функция 3')
+####    y = int(entry.get())
+##    label.destroy()
+##    label2 = ttk.Label(text=' (ход)', font=("Helvetica", 15))
+##    label2.pack()
+##
+##def ser4(event):
+##    print('функция 4')
+####    y = int(entry.get())
+##    label.destroy()
+##    label2 = ttk.Label(text=' (ход)', font=("Helvetica", 15))
+##    label2.pack()
+##
+##    
+##
+####def random_event(event):
+####    # Создаем список с функциями
+####    functions = [ser2, ser3, ser4]
+####    # Выбираем случайную функцию
+####    random_function = random.choice(functions)
+####    # Запускаем выбранную функцию
+####    random_function(event)
+####
+entry.bind('<Return>', ser)
+##
+root.mainloop()
+
