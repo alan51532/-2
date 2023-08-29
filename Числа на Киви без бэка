@@ -1,0 +1,45 @@
+from kivy.app import App
+from kivy.uix.boxlayout import BoxLayout 
+from kivy.uix.button import Button
+from kivy.uix.textinput import TextInput
+from kivy.uix.label import Label
+from kivy.core.window import Window
+
+Window.size = (550, 500)
+Window.clearcolor = (23/255, 65/255, 147/255, 1)
+Window.title = "Ну, подумай"
+
+class SerApp(App):
+    def build(self):
+        b = BoxLayout(orientation='vertical', spacing=50 )
+
+        label2 = Label(text='Цель игры: Называя по очереди числа от 1 до 10 и суммируя их сделать так,\n что бы  ваш ход закончился на 49 и какое бы число не назвал соперник\n  получится 50 и больше, что будет являться вашим  выйгрышем.\n \n  Для начала игры введите значение первым\n либо нажмите на кнопку  первого хода программой',  size_hint=(1, 1), halign='center', valign='middle')
+        b.add_widget(label2)
+        
+        t = TextInput(text='', halign='center',  font_size=60)
+        t.pos_hint={'x': 0.35, 'y': 0.3}
+        t.size_hint_y = 0.5##высота виджета entry
+        t.size_hint_x = 0.3 ##ширинf виджета entry 
+##        t.height = 300  # изменение высоты виджета entry
+##        t.width = 200  # изменение ширины виджета entry
+        b.add_widget(t)
+        self.t = t
+        button = Button(text="ход программы", pos_hint={'x': 0.35, 'y': 0.2}, size_hint=(0.3, 0.50), height=50,  on_press=self.num)
+        b.add_widget(button)
+        
+        label = Label(text="сумма чисел", valign='top')
+        b.add_widget(label)
+        self.label = label
+        
+        return b
+        
+    def num(self, instance):
+        val = self.t.text
+        if val.isdigit():
+            nval = int(val) + 5
+            self.t.text = str(nval)
+            self.label.text = str(nval)
+
+if __name__ == "__main__":
+    SerApp().run()
+
